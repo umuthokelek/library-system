@@ -6,11 +6,13 @@ public class Library {
     private List<Book> books;
     private List<User> users;
     private List<LoanRecord> loans;
+    private NotificationService notificationService;
 
-    public Library() {
+    public Library(NotificationService notificationService) {
         books = new ArrayList<>();
         users = new ArrayList<>();
         loans = new ArrayList<>();
+        this.notificationService = notificationService;
     }
 
     public void addBook(Book b) {
