@@ -24,6 +24,14 @@ public class LoanRecord {
         return user;
     }
 
+    public void setLoanDate(LocalDate loanDate) {
+        this.loanDate = loanDate;
+    }
+
+    public LocalDate getLoanDate() {
+        return loanDate;
+    }
+
     public boolean isReturned() {
         return isReturned;
     }
