@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Book {
+public abstract class Book {
     private String title;
     private boolean isBorrowed;
 
@@ -24,6 +24,8 @@ public class Book {
     public void setBorrowed(boolean isBorrowed) {
         this.isBorrowed = isBorrowed;
     }
+
+    public abstract int getLoanDurationInDays();
 
     @Override
     public boolean equals(Object o) {
