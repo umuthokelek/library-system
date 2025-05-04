@@ -4,21 +4,27 @@ public class Test {
         Book b2 = new Novel("Sofie'nin Dunyasi");
         Book b3 = new Textbook("Object-Oriented Thought Process");
 
-        // User user1 = new User("Umut");
-        // User user2 = new User("Hökelek");
-        // Book book1 = new Book("İnsan Neyle Yaşar");
-        // Book book2 = new Book("Kendime Düşünceler");
+        User u1 = new User("Umut");
+        User u2 = new User("Ahmet");
+        User u3 = new User("Mehmet");
 
-        // Library library = new Library();
-        // library.addUser(user1);
-        // library.addUser(user2);
-        // library.addBook(book1);
-        // library.addBook(book2);
+        BookManager bookManager = new BookManager();
+        UserManager userManager = new UserManager();
+        LoanManager loanManager = new LoanManager(bookManager, userManager);
+        NotificationService notificationService = new EmailNotificationService();
+        Library library = new Library(bookManager, userManager, loanManager,
+                notificationService);
 
-        // library.borrowBook(user1, book1);
-        // library.borrowBook(user2, book2);
-        // library.returnBook(user2, book2);
-        // library.borrowBook(user1, book2);
+        bookManager.addBook(b1);
+        bookManager.addBook(b2);
+        bookManager.addBook(b3);
+        userManager.addUser(u1);
+        userManager.addUser(u2);
+        userManager.addUser(u3);
+        library.borrowBook("Umut", "Can machines think?");
+        library.returnBook("Umut", "Can machines think?");
+        library.borrowBook("Ahmet", "Can machines think?");
+        library.borrowBook("Mehmet", "Can machines think?");
 
     }
 }

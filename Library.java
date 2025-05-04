@@ -15,4 +15,12 @@ public class Library {
         this.loanManager = loanManager;
         this.notificationService = notificationService;
     }
+
+    public void borrowBook(String userName, String bookTitle) {
+        loanManager.borrowBook(userName, bookTitle);
+    }
+
+    public void returnBook(String userName, String bookTitle) {
+        loanManager.returnBook(userName, bookTitle);
+    }
 }

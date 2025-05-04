@@ -1,13 +1,12 @@
-import java.lang.foreign.Linker.Option;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class LoanManager {
-    private List<LoanRecord> loans;
     private BookManager bookManager;
     private UserManager userManager;
+    private List<LoanRecord> loans;
 
     public LoanManager(BookManager bookManager, UserManager userManager) {
         this.bookManager = bookManager;
@@ -26,7 +25,7 @@ public class LoanManager {
             if (!book.isBorrowed()) {
                 loans.add(new LoanRecord(book, user));
                 book.setBorrowed(true);
-                System.out.println("Book borrowed successfully");
+                System.out.println("Book: " + book.getTitle() + " borrowed successfully by " + user.getName());
             } else {
                 System.out.println("Book is already borrowed");
             }
@@ -59,6 +58,7 @@ public class LoanManager {
                     } else {
                         System.out.println("Book " + book.getTitle() + " was returned on time by " + user.getName());
                     }
+                    return;
                 }
             }
             System.out.println("No active loan found for this user and book");

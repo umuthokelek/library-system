@@ -1,8 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class BookManager {
     private List<Book> books;
+
+    public BookManager() {
+        books = new ArrayList<>();
+    }
 
     public void addBook(Book b) {
         books.add(b);
