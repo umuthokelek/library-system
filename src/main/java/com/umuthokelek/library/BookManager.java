@@ -1,3 +1,5 @@
+package com.umuthokelek.library;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,5 +19,4 @@ public class BookManager {
     public Optional<Book> findByTitle(String title) {
         return books.stream().filter(b -> b.getTitle().equals(title)).findFirst();
     }
-
 }

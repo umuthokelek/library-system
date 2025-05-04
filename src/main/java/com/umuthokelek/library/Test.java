@@ -1,3 +1,5 @@
+package com.umuthokelek.library;
+
 public class Test {
     public static void main(String[] args) {
         Book b1 = new Article("Can machines think?");

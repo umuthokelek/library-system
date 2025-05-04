@@ -1,3 +1,5 @@
+package com.umuthokelek.library;
+
 public class EmailNotificationService implements NotificationService {
     @Override
     public void notify(User user, String message) {
