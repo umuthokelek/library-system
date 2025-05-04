@@ -8,12 +8,12 @@ public class Test {
         User u2 = new User("Ahmet");
         User u3 = new User("Mehmet");
 
+        NotificationService notificationService = new EmailNotificationService();
+
         BookManager bookManager = new BookManager();
         UserManager userManager = new UserManager();
-        LoanManager loanManager = new LoanManager(bookManager, userManager);
-        NotificationService notificationService = new EmailNotificationService();
-        Library library = new Library(bookManager, userManager, loanManager,
-                notificationService);
+        LoanManager loanManager = new LoanManager(bookManager, userManager, notificationService);
+        Library library = new Library(bookManager, userManager, loanManager);
 
         bookManager.addBook(b1);
         bookManager.addBook(b2);
@@ -23,8 +23,6 @@ public class Test {
         userManager.addUser(u3);
         library.borrowBook("Umut", "Can machines think?");
         library.returnBook("Umut", "Can machines think?");
-        library.borrowBook("Ahmet", "Can machines think?");
-        library.borrowBook("Mehmet", "Can machines think?");
 
     }
 }

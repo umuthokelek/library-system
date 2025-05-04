@@ -7,11 +7,13 @@ public class LoanManager {
     private BookManager bookManager;
     private UserManager userManager;
     private List<LoanRecord> loans;
+    private NotificationService notificationService;
 
-    public LoanManager(BookManager bookManager, UserManager userManager) {
+    public LoanManager(BookManager bookManager, UserManager userManager, NotificationService notificationService) {
         this.bookManager = bookManager;
         this.userManager = userManager;
         loans = new ArrayList<>();
+        this.notificationService = notificationService;
     }
 
     public void borrowBook(String userName, String bookTitle) {
@@ -26,6 +28,7 @@ public class LoanManager {
                 loans.add(new LoanRecord(book, user));
                 book.setBorrowed(true);
                 System.out.println("Book: " + book.getTitle() + " borrowed successfully by " + user.getName());
+                notificationService.notify(user, "You borrowed: " + book.getTitle());
             } else {
                 System.out.println("Book is already borrowed");
             }
@@ -58,6 +61,7 @@ public class LoanManager {
                     } else {
                         System.out.println("Book " + book.getTitle() + " was returned on time by " + user.getName());
                     }
+                    notificationService.notify(user, "You returned: " + book.getTitle());
                     return;
                 }
             }
